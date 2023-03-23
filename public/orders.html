@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ if eq .OrderUid nil }}
+<h2>{{ . }}</h2>
+{{ end }}
+<h2>{{ .OrderUid }}</h2>
+<br>
+<div>
+
+    track_number = {{.TrackNumber}} <br>
+    entry = {{.Entry}} <br>
+    locale = {{.Locale}} <br>
+    internal_sig = {{.InternalSignature}} <br>
+    customer_id = {{.CustomerId}} <br>
+    delivery_service = {{.DeliveryService}} <br>
+    shard_key = {{.Shardkey}} <br>
+    sm_id = {{.SmId}} <br>
+    date_created = {{.DateCreated}} <br>
+    oof_shard = {{.OofShard}} <br>
+</div>
+<h2>this order's delivery data:</h2>
+<div>
+    name = {{.Delivery.Name}} <br>
+    phone = {{.Delivery.Phone}} <br>
+    zip = {{.Delivery.Zip}} <br>
+    city = {{.Delivery.City}} <br>
+    address = {{.Delivery.Address}} <br>
+    region = {{.Delivery.Region}} <br>
+    email = {{.Delivery.Email}} <br>
+</div>
+<h2>this order's payment data:</h2>
+<div>
+    transaction = {{.Payment.Transaction}} <br>
+    request_id = {{.Payment.RequestId}} <br>
+    currency = {{.Payment.Currency}} <br>
+    provider = {{.Payment.Provider}} <br>
+    amount = {{.Payment.Amount}} <br>
+    payment_dt = {{.Payment.PaymentDt}} <br>
+    bank = {{.Payment.Bank}} <br>
+    delivery_cost = {{.Payment.DeliveryCost}} <br>
+    goods_total = {{.Payment.GoodsTotal}} <br>
+    custom_fee = {{.Payment.CustomFee}} <br>
+</div>
+<h2>this order's items:</h2>
+<div>
+    {{range .Items}}
+    "chrt_id": {{.ChrtId}}, <br>
+    "track_number": {{.TrackNumber}}, <br>
+    "price": {{.Price}}, <br>
+    "rid": {{.Rid}}, <br>
+    "name": {{.Name}}, <br>
+    "sale": {{.Sale}}, <br>
+    "size": {{.Size}}, <br>
+    "total_price": {{.TotalPrice}}, <br>
+    "nm_id": {{.NmId}}, <br>
+    "brand": {{.Brand}}, <br>
+    "status": {{.Status}} <br>
+    <hr>
+    {{end}}
+</div>
+</body>
+</html>
